@@ -1,5 +1,5 @@
 import argparse
-from loader import MoleculeDataset
+from utils.loader import MoleculeDataset
 import itertools
 import pandas as pd
 import torch
@@ -69,43 +69,7 @@ def random_scaffold_split(dataset, smiles_list, task_idx=None, null_value=0,
             envs.append(list(itertools.chain(*(scaffold_sets[len_per_env*i:]))))
     return envs
 
-def main():
-    # Training settings
-    parser = argparse.ArgumentParser(description='PyTorch implementation of pre-training of graph neural networks')
-    parser.add_argument('--device', type=int, default=0,
-                        help='which gpu to use if any (default: 0)')
-    parser.add_argument('--batch_size', type=int, default=32,
-                        help='input batch size for training (default: 32)')
-    parser.add_argument('--epochs', type=int, default=5,
-                        help='number of epochs to train (default: 100)')
-    parser.add_argument('--lr', type=float, default=0.001,
-                        help='learning rate (default: 0.001)')
-    parser.add_argument('--lr_scale', type=float, default=1,
-                        help='relative learning rate for the feature extraction layer (default: 1)')
-    parser.add_argument('--decay', type=float, default=0,
-                        help='weight decay (default: 0)')
-    parser.add_argument('--num_layer', type=int, default=5,
-                        help='number of GNN message passing layers (default: 5).')
-    parser.add_argument('--emb_dim', type=int, default=300,
-                        help='embedding dimensions (default: 300)')
-    parser.add_argument('--dropout_ratio', type=float, default=0.5,
-                        help='dropout ratio (default: 0.5)')
-    parser.add_argument('--graph_pooling', type=str, default="mean",
-                        help='graph level pooling (sum, mean, max, set2set, attention)')
-    parser.add_argument('--JK', type=str, default="last",
-                        help='how the node features across layers are combined. last, sum, max or concat')
-    parser.add_argument('--gnn_type', type=str, default="gin")
-    parser.add_argument('--dataset', type=str, default='zinc_standard_agent',
-                        help='root directory of dataset. For now, only classification.')
-    parser.add_argument('--input_model_file', type=str, default='', help='filename to read the model (if there is any)')
-    parser.add_argument('--filename', type=str, default='', help='output filename')
-    parser.add_argument('--seed', type=int, default=42, help="Seed for splitting the dataset.")
-    parser.add_argument('--runseed', type=int, default=0, help="Seed for minibatch selection, random initialization.")
-    parser.add_argument('--split', type=str, default="random_scaffold", help="random or scaffold or random_scaffold")
-    parser.add_argument('--eval_train', type=int, default=0, help='evaluating training or not')
-    parser.add_argument('--num_workers', type=int, default=4, help='number of workers for dataset loading')
-    args = parser.parse_args()
-
+def construct_pre_data(args):
     torch.manual_seed(args.runseed)
     np.random.seed(args.runseed)
     if torch.cuda.is_available():
@@ -117,8 +81,4 @@ def main():
         0].tolist()
     envs = random_scaffold_split(dataset, smiles_list, null_value=0, frac_train=0.8, frac_valid=0.1, frac_test=0.1)
     for i in range(len(envs)):
-        np.save(data_pre + "dataset/"+args.dataset+"/split"+str(i)+".npy",np.array(envs[i]))
-
-
-if __name__ == "__main__":
-    main()
+        np.save(data_pre + "dataset/"+args.dataset+"/new_split"+str(i)+".npy",np.array(envs[i]))
