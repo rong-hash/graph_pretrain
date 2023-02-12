@@ -117,7 +117,7 @@ def main():
         0].tolist()
     envs = random_scaffold_split(dataset, smiles_list, null_value=0, frac_train=0.8, frac_valid=0.1, frac_test=0.1)
     for i in range(len(envs)):
-        np.save(data_pre + "dataset/"+args.dataset+"/new_split"+str(i)+".npy",np.array(envs[i]))
+        np.save(data_pre + "dataset/"+args.dataset+"/split"+str(i)+".npy",np.array(envs[i]))
 
 
 if __name__ == "__main__":
