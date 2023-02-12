@@ -24,3 +24,10 @@ graph classification: contains the code of estimating graph pre-training feasibi
 utils:contains the code of models.
 
 ## Usage: How to run the code
+To run the node_classification, see example below
+
+`python node_classification/estimate_feasiblity.py --pre_data imdb_facebook --down_data h-index`
+
+To run the graph_classification, see example below
+
+`python graph_classification/estimate_feasiblity.py --pre_data zinc_standard_agent --split_num 2 --split_ids 01 --down_data bbbp `
