@@ -15,7 +15,4 @@ networkx                  2.3
 
 scikit-learn              0.20.3 
 
-Other Python modules. Some other Python module dependencies are listed in requirements.txt, which can be easily installed with pip:
-
-pip install -r requirements.txt
 
