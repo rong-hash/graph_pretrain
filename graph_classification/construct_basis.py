@@ -40,7 +40,7 @@ parser.add_argument('--rw_hops', type=int, default=1,
                     help='the number of trials')
 parser.add_argument('--ego_hops', type=int, default=2,
                     help='the number of ego_hops')
-parser.add_argument('--pre_data', type=str, default="imdb_academia",
+parser.add_argument('--pre_data', type=str, default="zinc_standard_agent",
                     help='pretrain data path')
 parser.add_argument('--down_data', type=str, default="",
                     help='downstream data path')
@@ -52,7 +52,7 @@ method = 'LG'
 file_path ="data/dataset/"
 save_path ="data/graphons/"
 load_path ="data/graphons/"
-pre_dataset= ['zinc_standard_agent']
+pre_dataset= args.pre_data
 def estimate_basis(file_path,dataname):
     dataset = MoleculeDataset(file_path + dataname, dataset=dataname)
     predata_splits = ""
