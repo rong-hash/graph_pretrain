@@ -69,8 +69,8 @@ def construct_basis(dataname):
                     os.makedirs(save_path + "domain/" + dataname + pre)
                 graphs = np.load("data/subgraphs/" +pre + ".npy").tolist()
                 step_func, non_para_graphon = estimate_graphon(np.array(graphs), method=method, args=args)
-                np.save(save_path + "domain/" + dataname + pre + "/graphon.npy", non_para_graphon)
-                np.save(save_path + "domain/" + dataname + pre + "/func.npy", step_func)
+                np.save(save_path + "domain/" +  pre + "/graphon.npy", non_para_graphon)
+                np.save(save_path + "domain/" +  pre + "/func.npy", step_func)
         elif split == "topo":
             if not os.path.exists(save_path + "topo/" + dataname):
                 os.makedirs(save_path + "topo/" + dataname)
