@@ -24,9 +24,9 @@ graph classification: contains the code of estimating graph pre-training feasibi
 utils:contains the code of models.
 
 ## Dataset Download
-For the graph classiciation pre-training and fine-tuning dataset, download from https://github.com/snap-stanford/pretrain-gnns#dataset-download, unzip it, and put it under graph_classification/data/dataset/
+For the graph classiciation pre-training and fine-tuning dataset, download from [pre-training data](https://github.com/snap-stanford/pretrain-gnns#dataset-download), unzip it, and put it under graph_classification/data/dataset/
 
-For the node classiciation pre-training dataset, the original datasets are stored in data.bin. And the datasets can be download through website.download from unzip it, and put it under node_classification/data/dataset/
+For the node classiciation pre-training dataset, the original datasets are stored in **data.bin**. And the datasets can be download through [pre-training data](https://drive.google.com/file/d/1kbOciSHXSOAFV7X1CuL_nm9_2sxKeDfU/view), unzip it, and put it under node_classification/data/dataset/
 
 ## Usage: How to run the code
 To run the node_classification, see example below
