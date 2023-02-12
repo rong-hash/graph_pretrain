@@ -4,6 +4,7 @@ from learner import estimate_graphon
 from load_utils import MoleculeDataset
 import argparse
 import os
+from cal_topo_statistics import cal_topo_graphs
 import math
 import networkx as nx
 from sklearn.cluster import SpectralClustering,KMeans
@@ -90,11 +91,7 @@ def estimate_basis(file_path,dataname):
         elif split=="topo":
             if not os.path.exists(save_path + "topo/" + dataname+ predata_splits):
                 os.makedirs(save_path + "topo/" + dataname+ predata_splits)
-            topos = []
-            for pre in predata_splits:
-                topo = np.load(load_path + "topo/" + dataname + pre + ".npy")
-                topos.append(topo)
-            topo_feats = np.concatenate((topos), axis=0)
+            topo_feats = cal_topo_graphs(graphs)
             kmeans = KMeans(n_clusters=5)
             kmeans.fit(topo_feats)
             y_kmeans = kmeans.predict(topo_feats)
