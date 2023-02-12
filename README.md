@@ -23,6 +23,11 @@ graph classification: contains the code of estimating graph pre-training feasibi
 
 utils:contains the code of models.
 
+## Dataset Download
+For the graph classiciation pre-training and fine-tuning dataset, download from https://github.com/snap-stanford/pretrain-gnns#dataset-download, unzip it, and put it under graph_classification/data/dataset/
+
+For the node classiciation pre-training dataset, the original datasets are stored in data.bin. And the datasets can be download through website.download from unzip it, and put it under node_classification/data/dataset/
+
 ## Usage: How to run the code
 To run the node_classification, see example below
 
@@ -31,3 +36,4 @@ To run the node_classification, see example below
 To run the graph_classification, see example below
 
 `python graph_classification/estimate_feasiblity.py --pre_data zinc_standard_agent --split_num 2 --split_ids 01 --down_data bbbp `
+
