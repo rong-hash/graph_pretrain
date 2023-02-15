@@ -46,18 +46,6 @@ def labeled_batcher():
 Data = namedtuple("Data", ["x", "edge_index", "y"])
 
 
-def create_graph_classification_dataset(dataset_name):
-    name = {
-        "imdb-binary": "IMDB-BINARY",
-        "imdb-multi": "IMDB-MULTI",
-        "rdt-b": "REDDIT-BINARY",
-        "rdt-5k": "REDDIT-MULTI-5K",
-        "collab": "COLLAB",
-    }[dataset_name]
-    dataset = TUDataset(name)
-    dataset.num_labels = dataset.num_labels[0]
-    dataset.graph_labels = dataset.graph_labels.squeeze()
-    return dataset
 
 
 class Edgelist(object):
@@ -195,7 +183,7 @@ class SSDataset(object):
 def create_node_classification_dataset(dataset_name):
     if "airport" in dataset_name:
         return Edgelist(
-            "data/struc2vec/",
+            "data/dataset/struc2vec/",
             {
                 "usa_airport": "usa-airports",
                 "brazil_airport": "brazil-airports",
@@ -204,7 +192,7 @@ def create_node_classification_dataset(dataset_name):
         )
     elif "h-index" in dataset_name:
         return Edgelist(
-            "data/hindex/",
+            "data/dataset/hindex/",
             {
                 "h-index-rand-1": "aminer_hindex_rand1_5000",
                 "h-index-top-1": "aminer_hindex_top1_5000",
