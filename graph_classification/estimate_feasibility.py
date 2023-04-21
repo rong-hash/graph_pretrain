@@ -139,5 +139,5 @@ for k in range(len(splits)):
     print("alpha_feasibility_{}:{}".format(split, alpha_dis_gw))
     alpha_min_dis = min(alpha_min_dis, alpha_dis_gw)
     mean_min_dis = min(mean_min_dis, mean_dis_gw)
- print("final_feasibility:{}".format(alpha_min_dis))
+print("final_feasibility:{}".format(alpha_min_dis))
 
