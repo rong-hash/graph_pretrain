@@ -1,1 +1,3 @@
 uploads/*
+graph_classification/data/*
+node_classification/data/*

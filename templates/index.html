@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Graph Pretrain</title>
     <style>
-      /* CSS styles remain the same */
       body {
         font-family: Arial, sans-serif;
         display: flex;
@@ -28,16 +27,45 @@
         margin-bottom: 5px;
       }
 
+      .select-container {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+
       select {
         font-size: 18px;
-        margin-bottom: 15px;
+        padding: 5px 10px;
+        appearance: none;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%23ccc" d="M2 0L0 2h4zm0 5L0 3h4z"/%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: right 0.5em center;
+        background-size: 0.65em auto;
       }
 
       input[type="submit"] {
         font-size: 18px;
+        padding: 5px 10px;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
       }
 
       .file-label {
+        font-weight: bold;
+      }
+
+      .method-label {
         font-weight: bold;
       }
 
@@ -76,19 +104,19 @@
   <body>
     <h1>Graph Pretrain</h1>
     <form action="/" method="post" enctype="multipart/form-data">
-      <label class="file-label" for="predata">Predata file:</label>
+      <label class="file-label" for="predata">Predata File:</label>
       <span class="file-hint">.networkx / .pyg format</span>
       <input type="file" name="predata" id="predata" onchange="showFileName(this, predataName)">
       <label class="upload-btn" for="predata">Choose file</label>
       <span id="predataName"></span><br>
 
-      <label class="file-label" for="downdata">Downdata file:</label>
+      <label class="file-label" for="downdata">Downdata File:</label>
       <span class="file-hint">.networkx / .pyg format</span>
       <input type="file" name="downdata" id="downdata" onchange="showFileName(this, downdataName)">
       <label class="upload-btn" for="downdata">Choose file</label>
       <span id="downdataName"></span><br>
 
-      <label for="method">Choose a method:</label>
+      <label class = "method-label", for="method">Choose a method:</label>
       <select name="method" id="method">
         <option value="Node">Node Classification</option>
         <option value="Graph">Graph Classification</option>
