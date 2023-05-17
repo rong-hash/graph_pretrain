@@ -35,7 +35,7 @@ def align_graphs(graphs: List[np.ndarray],
 
     aligned_graphs = []
     normalized_node_degrees = []
-    for i in tqdm(range(len(graphs))):
+    for i in (range(len(graphs))):
         num_i = graphs[i].shape[0]
 
         node_degree = 0.5 * np.sum(graphs[i], axis=0) + 0.5 * np.sum(graphs[i], axis=1)
@@ -561,13 +561,13 @@ def fgw_barycenter(aligned_graphs: List[np.ndarray],
         priors.append(tran + 1e-16)
 
     barycenter = None
-    for o in tqdm(range(outer_iters)):
+    for o in (range(outer_iters)):
         # update smoothed barycenter
         averaged_graph = averaging_graphs(aligned_graphs, trans, ws)
         barycenter = averaged_graph / (p_b @ p_b.T)
 
         # update optimal transports
-        for i in tqdm(range(len(aligned_graphs))):
+        for i in (range(len(aligned_graphs))):
             cost_i = gw_cost(barycenter, aligned_graphs[i], trans[i], p_b, aligned_ps[i])
             cost_i = gamma * cost_i + (1 - gamma) * cost_ps[i]
             cost_i /= np.max(cost_i)
